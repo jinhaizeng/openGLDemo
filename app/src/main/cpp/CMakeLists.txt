@@ -14,6 +14,8 @@ project("glesdemo")
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
+include_directories(include)
+
 add_library( # Sets the name of the library.
         glesdemo
 
@@ -21,7 +23,9 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        native-lib.cpp)
+        native-lib.cpp
+        eslib.cpp
+        include/drawDemo/rectangleDemo.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -45,4 +49,7 @@ target_link_libraries( # Specifies the target library.
 
         # Links the target library to the log library
         # included in the NDK.
-        ${log-lib})
+        ${log-lib}
+        android
+        GLESv3
+        EGL)
